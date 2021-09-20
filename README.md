@@ -1,5 +1,5 @@
 # Scrapping at GitHub 
-Web Scrapping simples buscando dados de um usuário no GitHub com Python 
+Web Scrapping simples buscando dados de um usuário no GitHub com Python e Bealtiful Soup
 
 ##  Começando
 1. Instale as libs no terminal
