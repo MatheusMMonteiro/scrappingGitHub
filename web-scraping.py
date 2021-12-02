@@ -16,19 +16,36 @@ soup = BeautifulSoup(page.content, 'html.parser') #instância o BeatSoup na vari
 #print(soup.prettify()) #conteúdo de uma página
 
 name = soup.find('span', class_='p-name').get_text().strip() #retorna as string da tag na variável
-userName = soup.find('span', class_='p-nickname').get_text().strip()
-organization = soup.find('span', class_='p-org').get_text().strip()
-local = soup.find('span', class_='p-label').get_text().strip()
 
-print("\nAguarde...")
-time.sleep(3)
-print("\nTrazendo informações...")
-time.sleep(1.5)
+userName = soup.find('span', class_='p-nickname').get_text().strip()
+organization = soup.find('span', class_='p-org')
+local = soup.find('span', class_='p-label')
+
+# print("\nAguarde...")
+# time.sleep(3)
+# print("\nTrazendo informações...")
+# time.sleep(1.5)
 
 print("\nNome:",name)
 print("\nNome de usuário:", userName)
-print("\nOrganização:", organization)
-print("\nLocalidade:", local)
 
-imgs = soup.find_all('img', 'avatar')
+
+if(organization != None):
+   organization = organization.get_text().strip()
+   print("\nOrganização:", organization)
+if(local != None):
+    local = local.get_text().strip()
+    print("\nLocalidade:", local)
+
+contributions = soup.find('div', class_='js-yearly-contributions')
+
+contributions = contributions.find('h2', class_='f4')
+
+contributions = contributions.get_text().strip().split()
+
+print("\n"+contributions[0] + " contribuições\n")
+
+
+
+
 
