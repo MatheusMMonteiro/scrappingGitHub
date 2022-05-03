@@ -29,6 +29,13 @@ local = soup.find('span', class_='p-label')
 print("\nNome:",name)
 print("\nNome de usuário:", userName)
 
+# check if user has github pro
+pro = soup.find('span', class_='Label Label--purple text-uppercase')
+if pro:
+    print("\nUsuário é PRO")
+else:
+    print("\nUsuário não é PRO")
+
 
 if(organization != None):
    organization = organization.get_text().strip()
