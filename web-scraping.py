@@ -9,6 +9,10 @@ page = requests.get(link)
 
 #print(page.status_code)
 
+if(page.status_code == 404):
+    print("Usuário não existe!")
+    exit()
+
 #print(page.content) #conteúdo de uma página
 
 soup = BeautifulSoup(page.content, 'html.parser') #instância o BeatSoup na variável com o conteúdo e estrutura o html
@@ -28,6 +32,15 @@ local = soup.find('span', class_='p-label')
 
 print("\nNome:",name)
 print("\nNome de usuário:", userName)
+
+
+# check if user has github pro
+pro = soup.find('span', class_='Label Label--purple text-uppercase')
+if pro:
+    print("\nUsuário é PRO")
+else:
+    print("\nUsuário não é PRO")
+
 
 
 if(organization != None):
